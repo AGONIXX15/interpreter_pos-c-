@@ -7,6 +7,14 @@ enum class TokenType {
   INTEGER,
   FLOAT,
   STRING,
+
+  ASSIGNMENT,
+  NOT_EQUAL,
+  GREATER,
+  GREATER_EQUAL,
+  LESS,
+  LESS_EQUAL,
+  
   PLUS,
   DASH,
   STAR,

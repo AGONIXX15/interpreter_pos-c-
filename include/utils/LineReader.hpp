@@ -1,15 +1,7 @@
 #pragma once
-#include <MyTypes.hpp>
-#include <coroutine>
+#include <fstream>
 #include <generator>
-#include <string>
+#include <MyTypes.hpp>
 
 using namespace MyTypes;
-
-inline std::generator<std::string> readLine(std::ifstream &file) {
-  std::string line;
-  println("reading lines");
-  while (getline(file, line)) {
-    co_yield line;
-  }
-}
+std::generator<string> readLine(std::ifstream &file);

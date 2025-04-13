@@ -1,11 +1,9 @@
 #pragma once
 #include <fstream>
 #include <lexer/Token.hpp>
-#include <utility>
 #include <utils/LineReader.hpp>
 
 using namespace MyTypes;
-
 class Lexer {
 
 public:
