@@ -1,24 +1,26 @@
 CC = g++
-CFLAGS = -std=c++23 -Wall -lstdc++
+CFLAGS = -std=c++23 -Wall  -Werror -lstdc++
 INCLUDE = -I include
 OUTPUTDIR = build
 SRC = $(shell find src -name "*.cpp")
 OBJ = $(patsubst src/%.cpp, $(OUTPUTDIR)/%.o, $(SRC))
-DEPS = $(OBJ:.o=.d)
 
-compile: $(OUTPUTDIR)/main
+all: $(OUTPUTDIR)/main test
 
 $(OUTPUTDIR)/main: $(OBJ)
-	$(CC) $(OBJ) -o $@
+	$(CC) $(CFLAGS) $(INCLUDE) $(OBJ) -o $@
 
-$(OUTPUTDIR)/%.o: src/%.cpp | $(OUTPUTDIR)
+$(OUTPUTDIR)/%.o: src/%.cpp 
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(INCLUDE) -MMD -MP -c $< -o $@
 
--include $(DEPS)
+-include $(OBJ:.o=.d)
 
 $(OUTPUTDIR):
 	mkdir -p $(OUTPUTDIR)
+
+test: $(OUTPUTDIR)/main
+	$(OUTPUTDIR)/main ./test/main.pos
 
 clean:
 	rm -rf $(OUTPUTDIR)

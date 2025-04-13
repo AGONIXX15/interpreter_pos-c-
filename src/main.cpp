@@ -1,4 +1,3 @@
-#include <print>
 #include <lexer/Lexer.hpp>
 #include <MyTypes.hpp>
 
@@ -9,7 +8,8 @@ int main() {
   Lexer lexer("test/main.pos");
   lexer.tokenize();
   for (const auto &token : lexer.getTokens()) {
-    println("{}",token.to_string());
+     //cout << token << "\n";
+     println("{}",token);
   }
   return 0;
 }
