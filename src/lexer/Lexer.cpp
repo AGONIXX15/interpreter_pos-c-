@@ -25,7 +25,7 @@ void Lexer::tokenize() {
 }
 
 void Lexer::tokenizeLine(const string &line) {
-  int pos = 0;
+  std::size_t pos = 0;
   vec<Token> tokens;
 
   while (pos < line.size()) {
